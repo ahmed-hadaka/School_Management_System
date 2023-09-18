@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>header</title>
+</head>
+
+<body>
+	<header>
+		<div>
+			<a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+			<a sec:authorize="isAuthenticated()" th:href="@{/dashboard}">Dashboard</a>
+			<a sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
+		</div>
+	</header>
+</body>
+
+</html>

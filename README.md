@@ -1,7 +1,7 @@
 # School_Management_System
 
 ### The system has three main components: Users, Classes and Courses with the corresponding functionalities for each.
-### There are two main users: Admin and Student, with Two Roles: ADMIN and STUDENT, every Student must be assigned to a class during registration procces and the only admin can change his/her class.
+### There are two main users: Admin and Student, with Two Roles: ADMIN and STUDENT, every Student must be assigned to a class during registration process and the only admin can change his/her class.
 - Admin Permissions:
   - Manibulation with students: view all the students, get a specific student, delete a student from the system.
   - Manibulation with courses: view all Courses, add new course, delete course, view the students enrolled in this course, add students to a course, and delete students from a course.

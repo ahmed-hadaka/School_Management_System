@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ahmed.school.models.Course;
 import com.ahmed.school.models.Person;
@@ -17,6 +18,7 @@ import com.ahmed.school.services.CourseService;
 import jakarta.validation.Valid;
 
 @Service
+@Transactional(readOnly = true)
 public class CourseServiceImp implements CourseService {
 
 	private final PersonRepository personRepository;
@@ -77,6 +79,7 @@ public class CourseServiceImp implements CourseService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteStudentFromCourse(int studentId, int courseId) {
 		Course course = courseRepository.findById(courseId).orElseThrow();
 		course.getPersons().removeIf(p -> p.getPersonId() == studentId);
@@ -84,11 +87,13 @@ public class CourseServiceImp implements CourseService {
 	}
 
 	@Override
+	@Transactional
 	public void addNewCourse(@Valid Course course) {
 		courseRepository.save(course);
 	}
 
 	@Override
+	@Transactional
 	public void deleteCourse(int courseId) {
 		courseRepository.deleteById(courseId);
 	}

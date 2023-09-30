@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ahmed.school.models.Person;
 import com.ahmed.school.models.StudyClass;
@@ -19,6 +20,7 @@ import com.ahmed.school.services.ClassService;
 import jakarta.validation.Valid;
 
 @Service
+@Transactional(readOnly = true)
 public class ClassServiceImp implements ClassService {
 
 	private final ClassRepository classRepository;
@@ -48,6 +50,7 @@ public class ClassServiceImp implements ClassService {
 	}
 
 	@Override
+	@Transactional
 	public void addNewClass(@Valid StudyClass studyClass) {
 		classRepository.save(studyClass);
 	}

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ahmed.school.models.Address;
 import com.ahmed.school.models.Course;
@@ -25,6 +26,7 @@ import com.ahmed.school.repositories.RoleRepository;
 import com.ahmed.school.services.PersonService;
 
 @Service
+@Transactional(readOnly = true)
 public class PersonServiceImp implements PersonService {
 
 	private final CourseRepository courseRepository;
@@ -52,6 +54,7 @@ public class PersonServiceImp implements PersonService {
 	}
 
 	@Override
+	@Transactional // override the default(read-only) to: read-write
 	public void createUser(Person person, int classId) {
 		StudyClass studyClass = classRepository.findById(classId).orElseThrow();
 		Role role = roleRepository.findById(2).orElseThrow();
@@ -108,6 +111,7 @@ public class PersonServiceImp implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public void updateUserProfile(Profile profile, int userId) {
 		Person person = getPerson(userId);
 
@@ -132,6 +136,7 @@ public class PersonServiceImp implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public void enrollCourse(int userId, int courseId) {
 
 		Person person = getPerson(userId);
@@ -143,6 +148,7 @@ public class PersonServiceImp implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public void withdrawFromCourse(int userId, int courseId) {
 		Person person = getPerson(userId);
 		person.getCourses().removeIf(c -> c.getCourseId() == courseId);
@@ -150,6 +156,7 @@ public class PersonServiceImp implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public void withdrawAllFromCourse(int courseId) {
 		List<Person> persons = personRepository.findAll();
 		for (Person person : persons) {
@@ -159,11 +166,13 @@ public class PersonServiceImp implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteStudent(int studentId) {
 		personRepository.deleteById(studentId);
 	}
 
 	@Override
+	@Transactional
 	public void deleteCourseFromStudent(int studentId, int courseId) {
 		Person person = getPerson(studentId);
 		person.getCourses().removeIf(c -> c.getCourseId() == courseId);
@@ -171,6 +180,7 @@ public class PersonServiceImp implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public boolean addStudentToCourse(String studentEmail, int courseId) {
 		Optional<Person> person = personRepository.findByEmail(studentEmail);
 
@@ -182,6 +192,7 @@ public class PersonServiceImp implements PersonService {
 	}
 
 	@Override
+	@Transactional
 	public boolean addStudentToClass(String studentEmail, int classId) {
 		StudyClass studyClass = classRepository.findById(classId).orElse(new StudyClass());
 		Optional<Person> person = personRepository.findByEmail(studentEmail);

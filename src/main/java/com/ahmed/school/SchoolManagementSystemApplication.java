@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(value = { "com.ahmed.school.repositories" })
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = { "com.ahmed.school.repositories" })
 @EnableJpaAuditing(auditorAwareRef = "auditorAwareImpl")
-@EntityScan(value = { "com.ahmed.school.models" })
+@EntityScan(basePackages = { "com.ahmed.school.models" })
 public class SchoolManagementSystemApplication {
 
 	public static void main(String[] args) {

@@ -19,7 +19,7 @@ import jakarta.validation.Payload;
 @Repeatable(value = FieldMatch.List.class)
 public @interface FieldMatch {
 
-	String message() default "Country Singer should have gender and last name defined";
+	String message() default "";
 
 	Class<?>[] groups() default {};
 

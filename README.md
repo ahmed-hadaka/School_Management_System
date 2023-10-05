@@ -1,4 +1,4 @@
-# School_Management_System.
+# School_Management_System
 
 ### The system has three main components: Users, Classes and Courses with the corresponding functionalities for each.
 ### There are two main users: Admin and Student, with Two Roles: ADMIN and STUDENT, every Student must be assigned to a class during registration process and only the admin can change his/her class.

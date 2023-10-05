@@ -3,7 +3,7 @@ package com.ahmed.school.services;
 import org.springframework.data.domain.Page;
 
 import com.ahmed.school.models.Person;
-import com.ahmed.school.models.Profile;
+import com.ahmed.school.util.Profile;
 
 public interface PersonService {
 

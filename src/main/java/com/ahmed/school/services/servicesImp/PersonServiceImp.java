@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ahmed.school.models.Address;
 import com.ahmed.school.models.Course;
 import com.ahmed.school.models.Person;
-import com.ahmed.school.models.Profile;
 import com.ahmed.school.models.Role;
 import com.ahmed.school.models.StudyClass;
 import com.ahmed.school.repositories.ClassRepository;
@@ -24,6 +23,7 @@ import com.ahmed.school.repositories.CourseRepository;
 import com.ahmed.school.repositories.PersonRepository;
 import com.ahmed.school.repositories.RoleRepository;
 import com.ahmed.school.services.PersonService;
+import com.ahmed.school.util.Profile;
 
 @Service
 @Transactional(readOnly = true)

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 
-import com.ahmed.school.models.Profile;
 import com.ahmed.school.services.servicesImp.PersonServiceImp;
+import com.ahmed.school.util.Profile;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;

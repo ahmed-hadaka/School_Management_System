@@ -9,7 +9,7 @@
 - Student Permissions:
   - view his/her enroled courses, view the other (unenroled) courses, enrol in a specific course, and withdraw from a course.
 
-- Every action is preserved with auditing functionality; I also added pagination and sorting, custom Authentication provider, custom validations and, Transaction Management.
+- Every action is preserved with auditing functionality. I also added pagination and sorting, custom Authentication provider, custom validations, Transaction Management and, Uploading files(personal photo).
 
 - Technologies:
   - Backend: **Java, Spring(MVC, AOP, Security, Data JPA), Spring Boot.**

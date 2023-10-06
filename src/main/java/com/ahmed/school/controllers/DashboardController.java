@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.ahmed.school.models.Person;
 import com.ahmed.school.services.servicesImp.PersonServiceImp;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class DashboardController {
 
@@ -18,9 +20,11 @@ public class DashboardController {
 	}
 
 	@GetMapping("/dashboard")
-	public String getDashboardPage(Authentication authentication, Model model) {
+	public String getDashboardPage(Authentication authentication, HttpSession session, Model model) {
 		Person person = personService.getPerson(authentication.getName());
 		model.addAttribute("person", person);
+		session.setAttribute("photo", person.getPhoto());
+		session.setMaxInactiveInterval(15 * 60);
 		return "dashboard";
 	}
 }

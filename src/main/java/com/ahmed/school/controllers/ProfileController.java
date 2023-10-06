@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriUtils;
 
 import com.ahmed.school.services.servicesImp.PersonServiceImp;
@@ -40,6 +41,7 @@ public class ProfileController {
 
 		model.addAttribute("userId", userId);
 		model.addAttribute("profile", profile);
+		model.addAttribute("photo", personService.getPhoto(userId));
 
 		// ---- comes from the /updateProfile
 		if (successUpdate != null) {
@@ -53,8 +55,9 @@ public class ProfileController {
 	}
 
 	@PostMapping("/updateProfile")
-	public String updateProfile(@Valid @ModelAttribute Profile profile, Errors errors, HttpSession session, Model model)
-			throws HttpSessionRequiredException {
+	public String updateProfile(@Valid @ModelAttribute Profile profile, Errors errors,
+			@RequestParam(name = "personal_photo", required = false) MultipartFile photo, HttpSession session,
+			Model model) throws HttpSessionRequiredException {
 
 		if (null == session.getAttribute("userId"))
 			throw new HttpSessionRequiredException("Session is ended or not available");
@@ -71,7 +74,7 @@ public class ProfileController {
 			return "redirect:/viewProfile?userId=" + userId + "&errors=" + encodedErrors;
 		}
 
-		personService.updateUserProfile(profile, userId);
+		personService.updateUserProfile(profile, photo, userId);
 
 		return "redirect:/viewProfile?userId=" + userId + "&successUpdate=true";
 	}

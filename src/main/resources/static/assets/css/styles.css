@@ -5,10 +5,13 @@ body {
 }
 
 /* header style */
-header div {
-	padding: 20px;
-	text-align: right;
+
+.header-container {
+	display: flex;
+	justify-content: space-between;
 	background-color: #001628;
+	align-items: center;
+	padding: 15px;
 }
 
 header div a {
@@ -119,6 +122,19 @@ header div a {
 
 
 /* dashboard style */
+.file-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.file-container img,
+.personal-photo {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+}
 
 .dashboard-container {
 	width: auto;
@@ -127,10 +143,10 @@ header div a {
 	border-radius: 27px;
 }
 
-.user-details{
-    text-align: center;
-    margin-bottom: 125px;
-    padding-top: 20px;
+.user-details {
+	text-align: center;
+	margin-bottom: 125px;
+	padding-top: 20px;
 }
 
 
@@ -155,59 +171,59 @@ header div a {
 
 .profile-container,
 .student-details-container {
-max-width: 400px; 
-  margin: 5px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 400px;
+	margin: 5px auto;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 
-.profile-container ul{
-  list-style: none;
-  color: red;
+.profile-container ul {
+	list-style: none;
+	color: red;
 }
 
 
 .profile-form-group,
 .student-details-form-group {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 
 .profile-form-group input,
 .student-details-form-group input,
 .profile-form-group textarea {
-  padding: 10px;
-  border-radius: 3px;
-  border: 2px solid #ccc;
+	padding: 10px;
+	border-radius: 3px;
+	border: 2px solid #ccc;
 }
 
 .profile-form-group input[type="submit"] {
-  background-color: #1a7bff;
-  color: #fff;
-  cursor: pointer;
+	background-color: #1a7bff;
+	color: #fff;
+	cursor: pointer;
 }
 
 .profile-form-group input[type="submit"]:hover {
-  background-color: #1a7bff;
+	background-color: #1a7bff;
 }
 
 
-.back-btn-container{
-  margin: 0 auto;
-  width: 800px;
+.back-btn-container {
+	margin: 0 auto;
+	width: 800px;
 }
 
-.back-btn{
-  background-color: #ffa947;
-  color: white;
-  padding: 2px 20px;
-  border-radius: 7px;
-  border: 2px solid #ccc;
-  text-decoration: none;
-  font-size: 18px;
+.back-btn {
+	background-color: #ffa947;
+	color: white;
+	padding: 2px 20px;
+	border-radius: 7px;
+	border: 2px solid #ccc;
+	text-decoration: none;
+	font-size: 18px;
 }
 
 /* view all classes style */
@@ -217,55 +233,57 @@ max-width: 400px;
 .all-students-container,
 .class-students-container,
 .course-students-container {
-  max-width: 800px;
-  margin: 100px auto 20px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	max-width: 800px;
+	margin: 100px auto 20px auto;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 
 .all-classes-container ul,
 .all-courses-container ul,
 .class-students-container ul,
-.course-students-container ul{
-  list-style: none;
-  color: red;
+.course-students-container ul {
+	list-style: none;
+	color: red;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
 }
 
-th, td {
-  padding: 10px;
-  text-align: left;
+th,
+td {
+	padding: 10px;
+	text-align: left;
 }
 
 th {
-  background-color: #f2f2f2;
-  font-weight: bold;
+	background-color: #f2f2f2;
+	font-weight: bold;
 }
 
-td a, .all-classes-container form button,
+td a,
+.all-classes-container form button,
 .all-courses-container form button,
 .class-students-container form button,
-.course-students-container form button{
-  background-color: #1a7bff;
-  text-decoration: none;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
+.course-students-container form button {
+	background-color: #1a7bff;
+	text-decoration: none;
+	color: #fff;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	cursor: pointer;
 }
 
 td a:hover {
-  background-color: #1a7bff;
-  text-decoration: none;
+	background-color: #1a7bff;
+	text-decoration: none;
 }
 
 

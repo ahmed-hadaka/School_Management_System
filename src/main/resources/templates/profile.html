@@ -16,10 +16,10 @@
 			<li th:text="${successUpdate}"></li>
 			<li style="color: red;" th:each="error : ${errors}" th:text="${error}"></li>
 		</ul>
-		<form th:action="@{/updateProfile}" method="POST" th:object="${profile}">
-			
+		<form th:action="@{/updateProfile}" method="POST" th:object="${profile}" enctype="multipart/form-data">
+
 			<h2 th:text="${profile.name}+' Profile Details'"></h2>
-			
+
 			<div class="profile-form-group">
 				<input type="text" th:field="*{name}" id="name" placeholder="user name">
 
@@ -39,10 +39,19 @@
 
 				<input type="text" th:field="*{zipCode}" id="zipcode" placeholder="Zip Code">
 			</div>
+
+			<div class="file-container">
+				<input type="file" accept="image/*" name="personal_photo">
+
+				<img th:if="${photo == null}" th:src="@{images/default-photo.jpg}">
+				<img th:unless="${photo == null}" alt="personal photo" th:src="@{'data:image/jpeg;base64,'+${photo}}">
+			</div>
+
 			<div class="profile-form-group">
 				<input type="submit" value="Update">
 			</div>
 		</form>
+
 		<div class="back-btn-container">
 			<button class="back-btn">
 				<a th:href="@{/dashboard}">

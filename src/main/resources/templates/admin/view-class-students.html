@@ -17,7 +17,7 @@
 		</ul>
 
 		<h2 th:text="'Students Assigned To '+ ${className}"></h2>
-		
+
 		<form th:action="@{/admin/addStudentToClass(classId= ${classId})}" method="POST">
 			<input type="email" placeholder="add student to the class.." name="email">
 			<button type="submit">Add Student</button>
@@ -25,6 +25,11 @@
 		<table>
 			<thead>
 				<tr>
+					<th>
+						<a href="#">
+							Photo
+						</a>
+					</th>
 					<th>
 						<a
 							th:href="@{'/admin/viewClassStudents/' + ${curPage} + '?sortBy=name&sortDir=' + ${sortDir}+'&classId='+${classId}}">
@@ -47,6 +52,12 @@
 			</thead>
 			<tbody>
 				<tr th:each="student : ${students}">
+					<td>
+						<img th:if="${student.photo == null}" th:src="@{/images/default-photo.jpg}"
+							class="personal-photo">
+						<img th:unless="${student.photo == null}" alt="personal photo"
+							th:src="@{'data:image/jpeg;base64,'+${student.photo}}" class="personal-photo">
+					</td>
 					<td th:text="${student.name}"></td>
 					<td th:text="${student.email}"></td>
 					<td th:text="${student.mobileNumber}"></td>

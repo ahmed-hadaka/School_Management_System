@@ -38,10 +38,15 @@
 			<div class="student-details-form-group">
 				<input type="text" th:field="*{address.zipCode}" id="zipcode" placeholder="Zip Code" readonly>
 			</div>
-			<div th:if="${student.role.name.equals('STUDENT')}"  class="student-details-form-group">
+			<div th:if="${student.role.name.equals('STUDENT')}" class="student-details-form-group">
 				<select id="class">
 					<option th:each="course: ${student.courses}" th:text="${course.name}"></option>
 				</select>
+			</div>
+			<div class="student-details-form-group">
+				<img th:if="${student.photo == null}" th:src="@{/images/default-photo.jpg}" class="personal-photo">
+				<img th:unless="${student.photo == null}" alt="personal photo"
+					th:src="@{'data:image/jpeg;base64,'+${student.photo}}" class="personal-photo">
 			</div>
 		</form>
 

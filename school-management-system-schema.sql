@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS person (
     email VARCHAR(50) NOT NULL,
     password VARCHAR(200) NOT NULL,
     mobile_number VARCHAR(11) NOT NULL,
+	photo LONGBLOB DEFAULT NULL, 
     class_id INT NOT NULL,
     address_id INT DEFAULT NULL,
     role_id INT NOT NULL,

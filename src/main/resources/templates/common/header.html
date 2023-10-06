@@ -9,7 +9,12 @@
 </head>
 
 <body>
-	<header>
+	<header class="header-container">
+		<div sec:authorize="isAuthenticated()" >
+			<img th:if="${session.photo == null}" th:src="@{/images/default-photo.jpg}" class="personal-photo">
+			<img th:unless="${session.photo == null}" alt="personal photo" th:src="@{'data:image/jpeg;base64,'+${session.photo}}" class="personal-photo">
+
+		</div>
 		<div>
 			<a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
 			<a sec:authorize="isAuthenticated()" th:href="@{/dashboard}">Dashboard</a>

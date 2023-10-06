@@ -1,5 +1,7 @@
 package com.ahmed.school.services.servicesImp;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +14,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ahmed.school.models.Address;
 import com.ahmed.school.models.Course;
@@ -112,11 +116,23 @@ public class PersonServiceImp implements PersonService {
 
 	@Override
 	@Transactional
-	public void updateUserProfile(Profile profile, int userId) {
+	public void updateUserProfile(Profile profile, MultipartFile photo, int userId) {
 		Person person = getPerson(userId);
 
 		person.setName(profile.getName());
 		person.setMobileNumber(profile.getMobileNumber());
+
+		if (!photo.isEmpty() && photo != null) {
+			String fileName = StringUtils.cleanPath(photo.getOriginalFilename());
+			if (fileName.contains("..")) {
+				System.out.println("not a a valid file");
+			}
+			try {
+				person.setPhoto(Base64.getEncoder().encodeToString(photo.getBytes()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 		Address address;
 		if (person.getAddress() != null)
@@ -203,6 +219,15 @@ public class PersonServiceImp implements PersonService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public String getPhoto(int userId) {
+		Person person = getPerson(userId);
+		String photo = person.getPhoto();
+		if (photo != null)
+			return photo;
+		return null;
 	}
 
 }

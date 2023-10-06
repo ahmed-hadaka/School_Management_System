@@ -10,12 +10,17 @@
 </head>
 
 <body>
- <div th:replace="~{common/header :: header}">...</div> 
+	<div th:replace="~{common/header :: header}">...</div>
 	<div class="all-students-container">
 		<h2>School Students</h2>
 		<table>
 			<thead>
 				<tr>
+					<th>
+						<a href="#">
+							Photo
+						</a>
+					</th>
 					<th>
 						<a th:href="@{'/admin/viewAllStudents/' + ${curPage} + '?sortBy=name&sortDir=' + ${sortDir}}">
 							Name
@@ -27,7 +32,8 @@
 						</a>
 					</th>
 					<th>
-						<a th:href="@{'/admin/viewAllStudents/' + ${curPage} + '?sortBy=mobileNumber&sortDir=' + ${sortDir}}">
+						<a
+							th:href="@{'/admin/viewAllStudents/' + ${curPage} + '?sortBy=mobileNumber&sortDir=' + ${sortDir}}">
 							Mobile Number
 						</a>
 					</th>
@@ -36,12 +42,17 @@
 			</thead>
 			<tbody>
 				<tr th:each="student : ${students}">
+					<td>
+						<img th:if="${student.photo == null}" th:src="@{/images/default-photo.jpg}" class="personal-photo">
+						<img th:unless="${student.photo == null}" alt="personal photo"
+							th:src="@{'data:image/jpeg;base64,'+${student.photo}}" class="personal-photo">
+					</td>
 					<td th:text="${student.name}"></td>
 					<td th:text="${student.email}"></td>
 					<td th:text="${student.mobileNumber}"></td>
 					<td>
 						<a th:href="@{/admin/studentDetails(studentId=${student.personId})}">
-						Details
+							Details
 						</a>|
 						<a th:href="@{/admin/deleteStudent(studentId=${student.personId})}">
 							Delete
@@ -67,7 +78,7 @@
 			<a th:if="${curPage == i}" th:text="${i}" class="active"> </a>
 		</span>
 	</div>
-<div th:replace="~{common/footer :: footer}"></div> 
+	<div th:replace="~{common/footer :: footer}"></div>
 </body>
 
 </html>

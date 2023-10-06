@@ -10,12 +10,12 @@
 </head>
 
 <body>
- <div th:replace="~{common/header :: header}"></div> 
+	<div th:replace="~{common/header :: header}"></div>
 	<div class="course-students-container">
 		<ul>
 			<li style="color: red;" th:text="${error}"></li>
 		</ul>
-		
+
 		<h2 th:text="'Students Enrolled In '+ ${courseName}+' Course'"></h2>
 
 		<form th:action="@{/admin/addStudentToCourse(courseId=${courseId})}" method="POST">
@@ -25,6 +25,11 @@
 		<table>
 			<thead>
 				<tr>
+					<th>
+						<a href="#">
+							Photo
+						</a>
+					</th>
 					<th>
 						<a
 							th:href="@{'/admin/viewCourseStudents/' + ${curPage} + '?sortBy=name&sortDir=' + ${sortDir}+'&courseId='+${courseId}}">
@@ -48,6 +53,12 @@
 			</thead>
 			<tbody>
 				<tr th:each="student : ${students}">
+					<td>
+						<img th:if="${student.photo == null}" th:src="@{/images/default-photo.jpg}"
+							class="personal-photo">
+						<img th:unless="${student.photo == null}" alt="personal photo"
+							th:src="@{'data:image/jpeg;base64,'+${student.photo}}" class="personal-photo">
+					</td>
 					<td th:text="${student.name}"></td>
 					<td th:text="${student.email}"></td>
 					<td th:text="${student.mobileNumber}"></td>
@@ -78,7 +89,7 @@
 		</span>
 	</div>
 
- <div th:replace="~{common/footer :: footer}"></div>
+	<div th:replace="~{common/footer :: footer}"></div>
 </body>
 
 </html>

@@ -5,14 +5,18 @@ import java.util.Set;
 
 import com.ahmed.school.annotations.FieldMatch;
 
+import jakarta.annotation.Nullable;
+import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
@@ -54,6 +58,11 @@ public class Person extends BaseEntity {
 
 	@Size(min = 5, message = "at least 5 characters required in the password")
 	private String password;
+
+	@Lob
+	@Nullable
+	@Basic(fetch = FetchType.LAZY)
+	private String photo;
 
 	@Transient
 	@NotBlank(message = "confirm password shouldn't be blank!")

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
@@ -9,9 +9,13 @@
 
 <body>
 	<footer>
+		<span sec:authorize="isAuthenticated()">
+			<a th:href="@{/local(lang=en)}">English</a> |
+			<a th:href="@{/local(lang=es)}">Español</a>
+		</span>
 		<div>
-			<p>© 2023 All Rights Reserved </p>
-			<a href="mailto: ahmedhadaka3@gmail.com">Contact Me</a>
+			<p th:text="#{footer.rights}" >© 2023 All Rights Reserved </p>
+			<a href="mailto: ahmedhadaka3@gmail.com" th:text="#{footer.contact}">Contact Me</a>
 		  </div> 
 	</footer>
 </body>

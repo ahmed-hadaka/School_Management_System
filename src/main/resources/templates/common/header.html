@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html  xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
@@ -16,9 +16,9 @@
 
 		</div>
 		<div>
-			<a sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
-			<a sec:authorize="isAuthenticated()" th:href="@{/dashboard}">Dashboard</a>
-			<a sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
+			<a sec:authorize="isAuthenticated()" th:href="@{/logout}" th:text="#{header.logout}">Logout</a>
+			<a sec:authorize="isAuthenticated()" th:href="@{/dashboard}" th:text="#{header.dashboard}">Dashboard</a>
+			<a sec:authorize="isAnonymous()" th:href="@{/login}" th:text="#{header.login}">Login</a>
 		</div>
 	</header>
 </body>

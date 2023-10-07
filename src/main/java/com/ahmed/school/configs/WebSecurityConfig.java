@@ -32,6 +32,7 @@ public class WebSecurityConfig {
 								  .requestMatchers(mvcMatcherBuilder.pattern("")).permitAll()
 								  .requestMatchers(mvcMatcherBuilder.pattern("/assets/**")).permitAll()
 								  .requestMatchers(mvcMatcherBuilder.pattern("/createUser")).permitAll()
+								  .requestMatchers(mvcMatcherBuilder.pattern("/local/**")).authenticated()
 								  .requestMatchers(mvcMatcherBuilder.pattern("/logout")).authenticated()
 								  .requestMatchers(mvcMatcherBuilder.pattern("/dashboard")).authenticated()
 								  .requestMatchers(mvcMatcherBuilder.pattern("/viewProfile")).authenticated()

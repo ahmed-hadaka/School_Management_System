@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html  xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6" >
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/assets/css/styles.css">
 
-	<title>Dashboard Page</title>
+	<title th:text="#{dashboard.title}">Dashboard Page</title>
 </head>
 
 <body>
@@ -15,30 +15,38 @@
 	<div th:replace="~{common/header :: header}"></div>
 	<div class="dashboard-container">
 		<div class="user-details">
-			<h2 th:text="'Welcome '+${person.name}+'!'"></h2>
+			<h2 th:text="'' + #{dashboard.welcom} + ${person.name}+'!'"></h2>
 			<h3 sec:authorize="hasRole('ROLE_STUDENT')"
-				th:text="'You Enrolled In Class '+${person.studyClass.name}+'!'"> </h3>
+				th:text="''+#{dashboard.welcom.class} +${person.studyClass.name}+'!'"> </h3>
 		</div>
 		<div class="dashbaord-links-container">
-			<a th:href="@{/viewProfile(userId=${person.personId})}">
+			<a th:href="@{/viewProfile(userId=${person.personId})}" th:text="#{dashboard.viewProfile}">
 				View My Profile
 			</a>
 			<a sec:authorize="hasRole('ROLE_STUDENT')"
-				th:href="@{'/student/viewEnrolledCourses/1?sortBy=name&sortDir=asc&userId='+${person.personId}}">
-
+				th:href="@{'/student/viewEnrolledCourses/1?sortBy=name&sortDir=asc&userId='+${person.personId}}"
+				th:text="#{dashboard.viewEnrolledCourses}"
+				>
 				View My Enrolled Courses
 			</a>
 			<a sec:authorize="hasRole('ROLE_STUDENT')"
-				th:href="@{'/student/viewAllCourses/1?sortBy=name&sortDir=asc&userId='+${person.personId}}">
+				th:href="@{'/student/viewAllCourses/1?sortBy=name&sortDir=asc&userId='+${person.personId}}"
+				th:text="#{dashboard.viewAllCourses}"
+				>
 				View All Courses
 			</a>
-			<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/viewAllCourses/1?sortBy=name&sortDir=asc}">
+			<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/viewAllCourses/1?sortBy=name&sortDir=asc}"
+			th:text="#{dashboard.viewAllCourses}"
+			>
 				View All Courses
 			</a>
-			<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/viewAllStudents/1?sortBy=name&sortDir=asc}">
+			<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/viewAllStudents/1?sortBy=name&sortDir=asc}" 
+			th:text="#{dashboard.viewAllStudents}">
 				View All Students
 			</a>
-			<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/viewAllClasses/1?sortBy=name&sortDir=asc}">
+			<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/viewAllClasses/1?sortBy=name&sortDir=asc}"
+			th:text="#{dashboard.viewAllClasses}">
+			>
 				View All Classes
 			</a>
 		</div>

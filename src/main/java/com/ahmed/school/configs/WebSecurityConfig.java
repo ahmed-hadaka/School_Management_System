@@ -44,6 +44,7 @@ public class WebSecurityConfig {
 		http.authenticationProvider(authenticationProvider);
 		http.formLogin(loginConfig -> loginConfig.loginPage("/login").defaultSuccessUrl("/dashboard", true).failureUrl("/login?error=true"));
 		http.logout(logoutConfig -> logoutConfig.invalidateHttpSession(true));
+		http.rememberMe(configs -> configs.tokenValiditySeconds(10 * 60));
 		http.httpBasic(Customizer.withDefaults());
 		return http.build();
 	}

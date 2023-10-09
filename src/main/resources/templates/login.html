@@ -15,8 +15,8 @@
 
 	<div class="container">
 		<ul>
-			<li th:text="${successLogout}">losddddddddddddddddddd</li>
-			<li th:text="${error}"> dddddddddddd</li>
+			<li th:text="${successLogout}"></li>
+			<li th:text="${error}"></li>
 		</ul>
 		<form th:action="@{/login}" method="POST">
 			<div class="form-group">
@@ -26,6 +26,10 @@
 			<div class="form-group">
 				<label for="password">Password:</label>
 				<input type="password" name="password" id="password" placeholder="Enter your password" required>
+			</div>
+			<div class="form-group">
+				<p class="remMe-p">Remember Me</p> 
+				<input type="checkbox" name="remember-me" class="remMe-inp"> 
 			</div>
 			<div class="form-group btn">
 				<input type="submit" value="Submit">

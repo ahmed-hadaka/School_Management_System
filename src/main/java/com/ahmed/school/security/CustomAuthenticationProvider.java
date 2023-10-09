@@ -1,41 +1,36 @@
 package com.ahmed.school.security;
 
-import java.util.Optional;
-
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.ahmed.school.models.Person;
-import com.ahmed.school.repositories.PersonRepository;
+import com.ahmed.school.services.servicesImp.CustomUserDetailsService;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	private final PasswordEncoder passwordEncoder;
-	private final PersonRepository personRepository;
+	private final CustomUserDetailsService customUserDetailsService;
 
-	public CustomAuthenticationProvider(PasswordEncoder passwordEncoder, PersonRepository personRepository) {
+	public CustomAuthenticationProvider(PasswordEncoder passwordEncoder,
+			CustomUserDetailsService customUserDetailsService) {
 		this.passwordEncoder = passwordEncoder;
-		this.personRepository = personRepository;
+		this.customUserDetailsService = customUserDetailsService;
 	}
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String email = authentication.getName();
 		String password = (String) authentication.getCredentials();
-		UserDetails userDetails = isAuthenticatedUser(email, password);
+		UserDetails userDetails = customUserDetailsService.loadUserByUsername(email);
 
-		if (userDetails != null) {
-
-			return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-
+		if (passwordEncoder.matches(password, userDetails.getPassword())) {
+			return new UsernamePasswordAuthenticationToken(email, null, userDetails.getAuthorities());
 		}
 		throw new BadCredentialsException("");
 	}
@@ -43,18 +38,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	@Override
 	public boolean supports(Class<?> authentication) {
 		return authentication.equals(UsernamePasswordAuthenticationToken.class);
-	}
-
-	private UserDetails isAuthenticatedUser(String email, String password) {
-		Optional<Person> person = personRepository.findByEmail(email);
-
-		// should setting the roles here again in order to access them using thymeleaf.
-		if (person.isPresent() && passwordEncoder.matches(password, person.get().getPassword())) {
-			UserDetails user = User.withUsername(person.get().getEmail()).password(password)
-					.roles(person.get().getRole().getName()).build();
-			return user;
-		}
-		return null;
 	}
 
 }

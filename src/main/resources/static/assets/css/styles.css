@@ -76,6 +76,15 @@ header div a {
 	background-color: #1a7bff;
 }
 
+.remMe-p{
+	display: inline;
+}
+
+.form-group .remMe-inp{
+	    width: fit-content;
+    margin-left: 20px;
+}
+
 /*Register style*/
 
 .register-container {

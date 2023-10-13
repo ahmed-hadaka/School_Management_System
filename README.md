@@ -21,64 +21,22 @@
 ##
 
 - SpringBoot Flow Architecture
+- 
 ![SpringBoot Flow Architecture](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/098eaf16-f3d6-439f-9472-e800d6709e98)
+
+
 
 
 
 - Entity Relationship Diagram
 
-![SMS-EntityRelationshipDiagram](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/0540083b-a592-401d-a7d2-2932196012f5)
-
-
-- Project Package Diagram
-![SMS-PackageDiagram](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/aa57ee5a-3372-469b-aaa5-943266c469a2)
-
-
-- RegisterPage
-![RegisterPage](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/e1ed18c8-9a4b-4d86-8de0-83cb7ecb6e48)
+![School_System_ERD](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/4676bce7-2353-45b8-89de-aacbb4fb986c)
 
 
 
-- loginPage
-![loginPage](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/fd3d7582-0490-41b6-9b6c-521a04ffc3d9)
 
+- Video Demo
 
+[screen-capture.webm](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/20e178df-ce84-458a-80fb-0ad3d0733ded)
 
-- Admin_dashboardPage
-![Admin_dashboardPage](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/a9be91f8-5db8-4a7c-b0e9-6e9fc3bc72cd)
-
-
-
-- User_ProfilePage
-![User_ProfilePage](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/0a65319d-d533-47a5-af5a-cbdf1ad833a7)
-
-
-
-- All_StudentsPage
-![All_StudentsPage](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/6d027250-f89b-47b8-b411-be0e0e6cff6e)
-
-
-
-- All_Courses
-![All_Courses](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/ee544c5f-72fa-48d2-bc24-4a826b1f92c8)
-
-
-
-- All_ClassesPage
-![All_ClassesPage](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/5db77d3d-0d27-43c2-8076-464120636b33)
-
-
-
-- Students-Enrolled in a DB Course
-![Students-Enrolled in a Course](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/b60da3c6-88b8-47d2-8e79-856f5ac85950)
-
-
-
-- Studnet_dashboard
-![Studnet_dashboard](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/95dc0226-4d50-45e5-bbb7-c2e91c8301cd)
-
-
-
-- StudentEnrooled Course
-![StudentEnrooled Course](https://github.com/ahmed-hadaka/School_Management_System/assets/92885872/5a6a473f-a32e-4f96-8c4b-3ae590584d25)
 

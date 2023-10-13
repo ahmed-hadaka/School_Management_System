@@ -1,7 +1,11 @@
+html,
 body {
 	margin: 0;
 	padding: 0;
 	background-color: #edeff3;
+	height: 100%;
+	box-sizing: border-box;
+
 }
 
 /* header style */
@@ -12,6 +16,7 @@ body {
 	background-color: #001628;
 	align-items: center;
 	padding: 15px;
+	height: 30px;
 }
 
 header div a {
@@ -26,7 +31,19 @@ header div a {
 
 /* login style  */
 
+.global-container {
+	height: inherit;
+}
+
 .container {
+	height: calc(100% - 196px);
+}
+
+.courses-container {
+	height: calc(100% - 214px);
+}
+
+.form-container {
 	max-width: 400px;
 	margin: 100px auto;
 	background-color: #fff;
@@ -35,12 +52,12 @@ header div a {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.container ul {
+.form-container ul {
 	list-style: none;
 	color: red;
 }
 
-.container a {
+.form-container a {
 	text-align: center;
 	display: inherit;
 }
@@ -76,13 +93,13 @@ header div a {
 	background-color: #1a7bff;
 }
 
-.remMe-p{
+.remMe-p {
 	display: inline;
 }
 
-.form-group .remMe-inp{
-	    width: fit-content;
-    margin-left: 20px;
+.form-group .remMe-inp {
+	width: fit-content;
+	margin-left: 20px;
 }
 
 /*Register style*/
@@ -146,10 +163,12 @@ header div a {
 }
 
 .dashboard-container {
-	width: auto;
 	margin: 80px 50px;
 	background-color: white;
 	border-radius: 27px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 
 .user-details {
@@ -161,8 +180,8 @@ header div a {
 
 .dashbaord-links-container {
 	text-align: center;
-	margin-bottom: 75px;
 	height: 115px;
+	width: inherit;
 }
 
 .dashbaord-links-container a {
@@ -175,8 +194,42 @@ header div a {
 	font-size: 20px
 }
 
-/* profile style */
+@media (max-width: 835px) {
 
+	.user-details {
+		text-align: center;
+		margin-bottom: 30px;
+		padding-top: 20px;
+	}
+
+	.dashbaord-links-container {
+		text-align: center;
+		height: 115px;
+		width: inherit;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.dashbaord-links-container a {
+		background-color: #1a7bff;
+		color: aliceblue;
+		text-decoration: none;
+		padding: 0px;
+		padding-bottom: 1px;
+		margin-left: 0px;
+		margin-bottom: 5px;
+		border-radius: 5px;
+		font-size: 20px;
+		width: 150px;
+	}
+}
+
+/* profile style */
+.global-profile-container {
+	height: calc(100% - 19%);
+}
 
 .profile-container,
 .student-details-container {
@@ -221,8 +274,8 @@ header div a {
 
 
 .back-btn-container {
-	margin: 0 auto;
-	width: 800px;
+	margin: 0 12%;
+	width: calc(100% - 12%);
 }
 
 .back-btn {
@@ -324,23 +377,27 @@ td a:hover {
 
 
 /* footer style */
+footer {
+	height: 36px;
+}
 
 footer div {
 	text-align: center;
 	background-color: #001628;
 	color: aliceblue;
 	padding: 0%;
-	font-size: 20px
+	font-size: 20px;
+	height: inherit;
 }
 
 footer div p {
 	margin: 0;
 	display: inline-block;
-	padding: 20px;
+	padding: 5px 10px;
 }
 
 footer div a {
 	display: inline-block;
-	padding: 20px;
+	padding: 5px 10px;
 	text-decoration: none;
 }

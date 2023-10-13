@@ -11,8 +11,9 @@
 </head>
 
 <body>
-
+<div class="global-container">
 	<div th:replace="~{common/header :: header}"></div>
+	<div class="container">
 	<div class="dashboard-container">
 		<div class="user-details">
 			<h2 th:text="'' + #{dashboard.welcom} + ${person.name}+'!'"></h2>
@@ -51,8 +52,9 @@
 			</a>
 		</div>
 	</div>
+	</div>
 	<div th:replace="~{common/footer :: footer}"></div>
-
+</div>
 </body>
 
 </html>

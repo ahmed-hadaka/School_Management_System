@@ -10,13 +10,14 @@
 </head>
 
 <body>
-
+<div class="global-container">
 	<div th:replace="~{common/header :: header}"></div>
 
 	<div class="container">
+	<div class="form-container">
 		<ul>
-			<li th:text="${successLogout}"></li>
-			<li th:text="${error}"></li>
+			<li th:text="${successLogout}" style="color: limegreen;"></li>
+			<li th:text="${error}" style="color: red;"></li>
 		</ul>
 		<form th:action="@{/login}" method="POST">
 			<div class="form-group">
@@ -37,7 +38,9 @@
 			<a th:href="@{/register}">New User!</a>
 		</form>
 	</div>
+	</div>
 	<div th:replace="~{common/footer :: footer}"></div>
+	</div>
 </body>
 
 </html>
